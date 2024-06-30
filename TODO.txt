@@ -1,0 +1,53 @@
+x/ smazat stary server projekt
+x/ nechat jeden file jako template  expressjs
+x/ copy vsechny TODO
+x/ zaverzovat do gitu, public repo
+x/ nastavit aby fungovalo pro vercel
+
+
+___TODO detekce article vs.video\
+___TODO detekce language\
+___TODO indikátor donut graf jak se približuji k cíli v daném tématu kategorii\
+___TODO označit některé tagy jako Hlavní, např. sales automation\
+___TODO přidat course nebo learn k všemu\
+___TODO přidat course nebo learn k všemu formou promptu a pak mi ukáže např. 20 změn a odsouhlasím celou batch\
+___TODO query abych našel Walker agent productboard\
+___TODO rules to recognize unique URL ikdyž mají nějaké další bordely v adrese\
+___TODO scrape tagů Title a možná další, náhled obrázku atd\
+___TODO skrýt ---job offer--\
+___odříznout všechny kidscoding bookmarks co už mě nezajímají
+
+BUGS
+------------
+*   // FIXME TODO // TODO opravit: client rekne ze je duplicitni tab, ale server to ulozi kdyz chci, expected: server zmerguje tagy (a klient prednačte tagy?)
+* BUG  opravit: client rekne ze je duplicitni tab, ale server to ulozi kdyz chci, expected: server zmerguje tagy (a klient prednačte tagy?)
+
+nový název??
+ * LLM marks
+ * llmarks
+ * ___notemark neni muj nazev
+
+
+
+DODELAT s chat gpt
+-------------------------
+auth0   google a linkedin login
+
+auth nestjs ...https://medium.com/@awaisshaikh94/a-detailed-guide-on-implementing-authentication-in-nestjs-4a347ce154b6
+
+
+REST endpoints  https://chatgpt.com/c/3d46edef-596a-46a0-817e-a731474b22f8
+	  // @Get()
+  // async findAll() {
+
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+
+  // @Post()
+  // create(@Body() createBookmarkDto: any) {
+
+  // @Put(':id')
+  // update(@Param('id') id: string, @Body() updateBookmarkDto: any) {
+
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
