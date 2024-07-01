@@ -5,8 +5,6 @@ import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-const serverPort = 3000;
-
 async function bootstrap() {
   //  const app = await NestFactory.create(AppModule);
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -31,7 +29,9 @@ async function bootstrap() {
   // SwaggerModule.setup('api-docs', app, document);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(serverPort);
+
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
   console.log(`Bookmarks Server is running on http://localhost:${serverPort}`);
 }
 
