@@ -129,7 +129,7 @@ export class BookmarksService implements OnModuleInit {
 
     console.log('All bookmarks saved into file ' + filename);
 
-    return savedBookmarks;
+    return savedBookmarks;    
   }
 
   

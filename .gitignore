@@ -3,6 +3,11 @@
 /node_modules
 /build
 
+package-lock.json
+
+# my bookmarks databases
+*.db
+
 # Logs
 logs
 *.log
