@@ -5,6 +5,8 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=16.0"},
   "scripts": {
     "build": "nest build",
     "start": "node dist/main.js",
