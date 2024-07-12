@@ -5,6 +5,11 @@
 $ npm install
 ```
 
+## pre-deploy.sh
+- Check Current Branch: Ensures you are in the main branch.
+- Warn About Uncommitted Changes: Notifies if there are uncommitted changes, but proceeds without stashing or committing them.- Force Push: git push origin main:deploy --force will push all committed changes to the remote deploy branch, overwriting it.
+- This script ensures that only committed changes in your local main branch are pushed to the remote deploy branch, without affecting any uncommitted or unstaged changes.
+
 ## Running and building the app in prod
 
 ```bash

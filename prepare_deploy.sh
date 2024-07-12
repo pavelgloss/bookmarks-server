@@ -3,18 +3,18 @@
 echo "Preparing deploy branch..."
 
 # Ensure we are in the main branch
-git checkout main
+current_branch=$(git symbolic-ref --short HEAD)
+if [ "$current_branch" != "main" ]; then
+  echo "You are not in the main branch. Please switch to the main branch."
+  exit 1
+fi
 
-# Create or switch to the deploy branch
-git checkout -B deploy
+# Check for uncommitted changes
+if ! git diff-index --quiet HEAD --; then
+  echo "Warning: You have uncommitted changes. These will not be part of the deployment."
+fi
 
-# Merge changes from main into deploy without affecting the remote main branch
-git merge main
+# Push local main branch to remote deploy branch with force
+git push origin main:deploy --force
 
-# Push the deploy branch to the remote repository
-git push origin deploy --force
-
-# Switch back to the main branch
-git checkout main
-
-echo "Deploy branch is ready with the latest changes, and you are now back on the main branch."
+echo "Deploy branch is ready with the latest changes."
