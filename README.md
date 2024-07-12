@@ -5,6 +5,21 @@
 $ npm install
 ```
 
+## Running and building the app in prod
+
+```bash
+# prod
+$ npm run build
+$ npm start
+
+## which is same as 
+node dist/main.js
+
+on droplet run
+
+pm2 start dist/main.js
+
+
 ## Running the app
 
 ```bash
