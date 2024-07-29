@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, NestMiddleware } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, NestMiddleware, HttpCode } from '@nestjs/common';
 import { BookmarksService, CreateBookmarkDto, SavedBookmark } from './bookmarks.service';
 import { ApiBody, ApiProperty, ApiResponse, ApiTags } from '@nestjs/swagger';
 
@@ -10,6 +10,16 @@ export class Successible {
 export class SuccessWithCount extends Successible {
   @ApiProperty()
   count: number;
+}
+
+class BookmarkUrlDto {
+  @ApiProperty()
+  url: string;
+}
+
+class CheckDuplicateResponseDto {
+  @ApiProperty({ default: 0 })
+  duplicates: number;
 }
 
 @ApiTags('bookmarks')
@@ -27,8 +37,10 @@ export class RestBookmarksController {
     // od unor 2023 kdy procesuju kazda zalozka dostane tento tag
     // truckers2, joinedAutix, beforeTermsTech
     // termsTechQuick ... kdyz jsem mel asi 550 zalozek a chtel behem večera sdělat rychle
+    // cleanup07   ... 07-2024
 
-    bookmark.tags.push("termsTechQuick");
+    bookmark.tags.push("cleanup07");
+    // bookmark.tags.push("termsTechQuick");
 
     const newBookmark: SavedBookmark = await this.bookmarksService.addBookmark(bookmark);
     const count = await this.bookmarksService.getCount();
@@ -53,11 +65,16 @@ export class RestBookmarksController {
   }
 
   @Post("/check-duplicate")
-  async checkDuplicate(@Body() bookmark: CreateBookmarkDto): Promise<any> {
-    const bookmarks = await this.bookmarksService.getByUrl(bookmark.url);
+  @HttpCode(200)
+  @ApiBody({ type: BookmarkUrlDto })
+  @ApiResponse({ status: 200, description: 'Check duplicate', type: CheckDuplicateResponseDto })
+  @ApiResponse({ status: 400, description: 'Bad Request' })    // by framework
+  // ie. Expected double-quoted property name in JSON at position 38 (line 3 column 1)
+  async checkDuplicate(@Body() bookmarkUrl: BookmarkUrlDto): Promise<CheckDuplicateResponseDto> {
+    const bookmarks = await this.bookmarksService.getByUrl(bookmarkUrl.url);
 
     if (bookmarks.length > 0) {
-      console.log('WARNING: Duplicate URL found! ' + bookmarks.length + "x, " + bookmark.url);
+      console.log('WARNING: Duplicate URL found! ' + bookmarks.length + "x, " + bookmarkUrl.url);
       bookmarks.forEach((bm) => {
         console.log("_id: " + bm._id + ", tags: " + bm.tags);
       });

@@ -4,6 +4,8 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 import * as bodyParser from 'body-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as session from 'express-session';
+import { logger } from './logger.middleware';
 
 async function bootstrap() {
   //  const app = await NestFactory.create(AppModule);
@@ -18,15 +20,25 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
+  app.use(
+    session({
+      secret: 'appleDog56879.homePinkYellow',  
+      resave: false,
+      saveUninitialized: false,
+      cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }   // 7 days
+    }),
+  );
+  app.use(logger);
+
   const config = new DocumentBuilder()
     .setTitle('Bookmarks API')
     .setDescription('API documentation for Bookmarks service')
     .setVersion('1.0')
+    .addTag('auth')
     .addTag('bookmarks')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  // SwaggerModule.setup('api-docs', app, document);
   SwaggerModule.setup('api', app, document);
 
 

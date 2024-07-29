@@ -38,7 +38,7 @@ export class BookmarksService implements OnModuleInit {
   }
 
   async onModuleInit() {
-    this.db = new Datastore({ filename: 'pokusna.db', corruptAlertThreshold: 0 });
+    this.db = new Datastore({ filename: 'mojeDatabazeMerged.db', corruptAlertThreshold: 0 });
     await this.db.loadDatabaseAsync();
     await this.initializeBookmarks();
   }

@@ -6,7 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "engines": {
-    "node": ">=16.0"},
+    "node": ">=16.0"
+  },
   "scripts": {
     "build": "nest build",
     "start": "node dist/main.js",
@@ -28,18 +29,23 @@
     "@nestjs/schedule": "^4.0.2",
     "@nestjs/swagger": "^7.3.1",
     "@seald-io/nedb": "^4.0.4",
+    "autoprefixer": "^10.4.19",
     "body-parser": "^1.20.2",
     "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
     "hbs": "^4.2.0",
+    "postcss": "^8.4.40",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "tailwindcss": "^3.4.7"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
     "@types/express": "^4.17.17",
+    "@types/express-session": "^1.18.0",
     "@types/jest": "^29.5.2",
     "@types/nedb": "^1.8.16",
     "@types/node": "^20.3.1",
