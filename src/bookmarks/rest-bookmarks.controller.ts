@@ -38,8 +38,10 @@ export class RestBookmarksController {
     // truckers2, joinedAutix, beforeTermsTech
     // termsTechQuick ... kdyz jsem mel asi 550 zalozek a chtel behem večera sdělat rychle
     // cleanup07   ... 07-2024
+    // cleanup08        08-2024 ...asi 350 zalozek pred nastupem
 
-    bookmark.tags.push("cleanup07");
+    bookmark.tags.push("cleanup08");
+    // bookmark.tags.push("cleanup07");
     // bookmark.tags.push("termsTechQuick");
 
     const newBookmark: SavedBookmark = await this.bookmarksService.addBookmark(bookmark);

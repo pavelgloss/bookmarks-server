@@ -9,6 +9,9 @@ yarn.lock
 # my bookmarks databases
 *.db
 
+# backup files
+.backup
+
 # Logs
 logs
 *.log
