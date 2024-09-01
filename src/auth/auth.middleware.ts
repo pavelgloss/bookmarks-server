@@ -5,8 +5,12 @@ import { Request, Response, NextFunction } from 'express';
 export class AuthMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
 
-    if (1===1) next();  // disable auth
-    
+    // disable auth
+    if (true) {
+      next();
+      return;
+    }
+
     if (req.session && req.session["user"]) {  // TODO use req.session.user
 
       next();

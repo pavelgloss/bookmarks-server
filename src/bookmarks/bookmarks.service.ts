@@ -20,6 +20,8 @@ export class CreateBookmarkDto {
 
   @ApiProperty()
   timestampStart: number;
+
+  // and more fields from client
 }
 
 export class SavedBookmark extends CreateBookmarkDto {

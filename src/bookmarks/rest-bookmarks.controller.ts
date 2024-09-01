@@ -32,7 +32,6 @@ export class RestBookmarksController {
   @ApiResponse({ status: 201, description: 'The bookmark has been successfully created.', type: SuccessWithCount })
   @ApiResponse({ status: 400, description: 'Bad Request' })
   async createBookmark(@Body() bookmark: CreateBookmarkDto): Promise<SuccessWithCount> {
-    // original endpoint>     "/save"
 
     // od unor 2023 kdy procesuju kazda zalozka dostane tento tag
     // truckers2, joinedAutix, beforeTermsTech
@@ -43,6 +42,21 @@ export class RestBookmarksController {
     bookmark.tags.push("cleanup08");
     // bookmark.tags.push("cleanup07");
     // bookmark.tags.push("termsTechQuick");
+
+
+    // json filled from client
+    // title: $("#title-input").val(),
+    // url: $("#url-input").val(),
+    // favIconUrl: $("#favIconUrl-input").val(),  
+    // id: globalTab.id,
+    // index: globalTab.index,
+    // sessionId: globalTab.sessionId,
+    // groupId: globalTab.groupId,
+    // lastAccessed: globalTab.lastAccessed,
+    // windowId: globalTab.windowId,
+    // tags: [tag1, tag2],
+    // timestampStart: globalTimestampStart,
+    // timestampStop: Date.now()
 
     const newBookmark: SavedBookmark = await this.bookmarksService.addBookmark(bookmark);
     const count = await this.bookmarksService.getCount();
